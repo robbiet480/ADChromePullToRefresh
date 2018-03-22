@@ -222,6 +222,8 @@ class ADChromePullToRefresh: NSObject, ADChromePullToRefreshViewDelegate {
     //MARK: - Gestures
     
     fileprivate var i = 0
+
+    @objc
     func handleScrollViewPanGesture(_ panGesture: UIPanGestureRecognizer) {
         if !self.isPanGestureHandlerAdded || self.state == .loading {
             return
