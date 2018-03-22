@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ADChromePullToRefreshActionView: UIView {
+public class ADChromePullToRefreshActionView: UIView {
 
     var iconView: UIView!
     var iconMaskView: UIImageView!
@@ -22,13 +22,13 @@ class ADChromePullToRefreshActionView: UIView {
         self.createIconMaskView()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     //MARK: - UIView
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         self.iconMaskView.frame = self.bounds
         self.iconView.mask = self.iconMaskView

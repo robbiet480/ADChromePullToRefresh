@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol ADChromePullToRefreshViewDelegate: NSObjectProtocol {
+public protocol ADChromePullToRefreshViewDelegate: NSObjectProtocol {
     func chromePullToRefreshViewDidChangeHighlightedView(_ newHighlightedActionViewType: ADChromePullToRefreshActionViewType?)
     func chromePullToRefreshView(_ view: ADChromePullToRefreshView, actionViewWithType type: ADChromePullToRefreshActionViewType) -> ADChromePullToRefreshActionView
 }
 
-class ADChromePullToRefreshView: UIView {
+public class ADChromePullToRefreshView: UIView {
     
     weak var delegate: ADChromePullToRefreshViewDelegate!
     
@@ -40,7 +40,7 @@ class ADChromePullToRefreshView: UIView {
         self.commonInit()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.commonInit()
     }

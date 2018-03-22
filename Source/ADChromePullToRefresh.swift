@@ -16,7 +16,7 @@ protocol ADChromePullToRefreshDelegate: NSObjectProtocol {
 }
 
 
-class ADChromePullToRefresh: NSObject, ADChromePullToRefreshViewDelegate {
+public class ADChromePullToRefresh: NSObject, ADChromePullToRefreshViewDelegate {
     
     weak var delegate: ADChromePullToRefreshDelegate!
     
@@ -90,12 +90,12 @@ class ADChromePullToRefresh: NSObject, ADChromePullToRefreshViewDelegate {
     
     //MARK: - ADChromePullToRefreshViewDelegate
     
-    func chromePullToRefreshViewDidChangeHighlightedView(_ newHighlightedActionViewType: ADChromePullToRefreshActionViewType?) {
+    public func chromePullToRefreshViewDidChangeHighlightedView(_ newHighlightedActionViewType: ADChromePullToRefreshActionViewType?) {
         self.pullToRefreshStartPanGestureX = self.scrollView.panGestureRecognizer.location(in: self.pullToRefreshSuperview).x
         self.highlightedActionViewType = newHighlightedActionViewType
     }
     
-    func chromePullToRefreshView(_ view: ADChromePullToRefreshView, actionViewWithType type: ADChromePullToRefreshActionViewType) -> ADChromePullToRefreshActionView {
+    public func chromePullToRefreshView(_ view: ADChromePullToRefreshView, actionViewWithType type: ADChromePullToRefreshActionViewType) -> ADChromePullToRefreshActionView {
         return self.delegate!.chromePullToRefresh(self, viewWithType: type)
     }
     
@@ -236,7 +236,7 @@ class ADChromePullToRefresh: NSObject, ADChromePullToRefreshViewDelegate {
     
     //MARK: - KVO
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if context != &self.context {
             return
         }

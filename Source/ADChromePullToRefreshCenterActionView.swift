@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ADChromePullToRefreshCenterActionView: ADChromePullToRefreshActionView {
+public class ADChromePullToRefreshCenterActionView: ADChromePullToRefreshActionView {
 
     fileprivate let initialIconRotation: CGFloat = (CGFloat)(-M_PI_2 + M_PI_4)
     fileprivate let zeroAlphaScrollProgress: CGFloat = 0.2

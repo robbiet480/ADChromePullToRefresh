@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ADChromePullToRefreshHighlightView: UIView, CAAnimationDelegate {
+public class ADChromePullToRefreshHighlightView: UIView, CAAnimationDelegate {
 
     fileprivate let minimumDeltaXToStartStretching: CGFloat = 30.0
     fileprivate let highlightLayerMaximumRadius: CGFloat = 30.0
@@ -28,7 +28,7 @@ class ADChromePullToRefreshHighlightView: UIView, CAAnimationDelegate {
         self.addHighlightLayer()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -116,7 +116,7 @@ class ADChromePullToRefreshHighlightView: UIView, CAAnimationDelegate {
     
     //MARK: - CABasicAnimationDelegate
     
-    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+    public func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         if self.highlightLayer.animation(forKey: "resetAnimation") != nil && anim == self.highlightLayer.animation(forKey: "resetAnimation") {
             self.highlightLayer.removeAllAnimations()
             self.highlightLayer.path = UIBezierPath(rect: CGRect.zero).cgPath
