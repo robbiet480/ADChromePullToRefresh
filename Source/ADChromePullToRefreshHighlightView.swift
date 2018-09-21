@@ -39,15 +39,15 @@ public class ADChromePullToRefreshHighlightView: UIView, CAAnimationDelegate {
     }
     
     fileprivate func updateDeltaXForCenter(_ deltaX: CGFloat) -> CGFloat {
-        return fabs(deltaX) / 6
+        return abs(deltaX) / 6
     }
     
     fileprivate func updateDeltaXForStretchingSide(_ deltaX: CGFloat) -> CGFloat {
-        return fabs(deltaX) / 3
+        return abs(deltaX) / 3
     }
     
     fileprivate func updateDeltaXForOppositeStretchingSide(_ deltaX: CGFloat) -> CGFloat {
-        return log(fabs(deltaX) + 1)
+        return log(abs(deltaX) + 1)
     }
     
     fileprivate func highlightedCirclePathIfTransformedFromLeftToRight() -> UIBezierPath {
@@ -139,7 +139,7 @@ public class ADChromePullToRefreshHighlightView: UIView, CAAnimationDelegate {
         let endPath = self.bigCirclePath()
         
         let animationGroup = CAAnimationGroup()
-        animationGroup.fillMode = kCAFillModeForwards
+        animationGroup.fillMode = CAMediaTimingFillMode.forwards
         animationGroup.isRemovedOnCompletion = false
         animationGroup.delegate = self
         animationGroup.duration = 0.3
@@ -147,12 +147,12 @@ public class ADChromePullToRefreshHighlightView: UIView, CAAnimationDelegate {
         let pathAnimation = CABasicAnimation(keyPath: "path")
         pathAnimation.fromValue = self.highlightLayer.path
         pathAnimation.toValue = endPath.cgPath
-        pathAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        pathAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         let opacityAnimation = CABasicAnimation(keyPath: "opacity")
         opacityAnimation.fromValue = 1
         opacityAnimation.toValue = 0
-        opacityAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        opacityAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         
         animationGroup.animations = [pathAnimation, opacityAnimation]
         
@@ -199,8 +199,8 @@ public class ADChromePullToRefreshHighlightView: UIView, CAAnimationDelegate {
         animation.toValue =  endCGPath!
         animation.duration = duration
         animation.delegate = self
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        animation.fillMode = kCAFillModeForwards
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        animation.fillMode = CAMediaTimingFillMode.forwards
         animation.isRemovedOnCompletion = false
         self.highlightLayer.add(animation, forKey: "highlightAnimation")
         

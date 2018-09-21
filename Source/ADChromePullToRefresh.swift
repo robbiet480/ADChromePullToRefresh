@@ -110,9 +110,9 @@ public class ADChromePullToRefresh: NSObject, ADChromePullToRefreshViewDelegate 
     
     func setUpConstraints() {
         let viewsDictionary: [String : ADChromePullToRefreshView] = ["pullToRefresh" : self.pullToRefreshView]
-        let horizontalConstraints: [NSLayoutConstraint] = NSLayoutConstraint.constraints(withVisualFormat: "H:|[pullToRefresh]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        let horizontalConstraints: [NSLayoutConstraint] = NSLayoutConstraint.constraints(withVisualFormat: "H:|[pullToRefresh]|", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
         self.pullToRefreshSuperview.addConstraints(horizontalConstraints)
-        let verticalConstraints: [NSLayoutConstraint] = NSLayoutConstraint.constraints(withVisualFormat: "V:|[pullToRefresh]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        let verticalConstraints: [NSLayoutConstraint] = NSLayoutConstraint.constraints(withVisualFormat: "V:|[pullToRefresh]", options: NSLayoutConstraint.FormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
         self.pullToRefreshSuperview.addConstraints(verticalConstraints)
         
         self.pullToRefreshViewHeightConstraint = NSLayoutConstraint(item: self.pullToRefreshView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: self.topView.bounds.height)
@@ -180,7 +180,7 @@ public class ADChromePullToRefresh: NSObject, ADChromePullToRefreshViewDelegate 
             return
         }
         
-        let delta = (fabs(offsetY) - self.scrollViewOriginalOffsetY)
+        let delta = (abs(offsetY) - self.scrollViewOriginalOffsetY)
         let topViewCoefficient = delta / scrollViewOffsetYDeltaForTopViewZeroAlpha
         let newTopViewAlpha = max(0, 1 - topViewCoefficient)
         self.topView.alpha = newTopViewAlpha
@@ -223,8 +223,7 @@ public class ADChromePullToRefresh: NSObject, ADChromePullToRefreshViewDelegate 
     
     fileprivate var i = 0
 
-    @objc
-    func handleScrollViewPanGesture(_ panGesture: UIPanGestureRecognizer) {
+    @objc func handleScrollViewPanGesture(_ panGesture: UIPanGestureRecognizer) {
         if !self.isPanGestureHandlerAdded || self.state == .loading {
             return
         }
